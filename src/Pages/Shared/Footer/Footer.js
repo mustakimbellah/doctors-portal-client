@@ -10,7 +10,7 @@ const Footer = () => {
                 backgroundSize: 'cover'
             }}
             className="p-10 ">
-            <div className='footer '>
+            <div className='footer justify-between '>
                 <div>
                     <span className="footer-title">Services</span>
                     <Link to="/" className="link link-hover">Branding</Link>
