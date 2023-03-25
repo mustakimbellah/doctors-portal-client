@@ -13,8 +13,9 @@ const Signup = () => {
     const [signUpError, setSignUpError] = useState('');
 
     const handleSignUp = (data) => {
-        console.log(data);
-        signUpError('');
+        // console.log(data);
+
+        setSignUpError('');
 
         createUser(data.email, data.password)
             .then(result => {
