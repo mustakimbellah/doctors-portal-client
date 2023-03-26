@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
 
 const Signup = () => {
 
@@ -12,7 +13,15 @@ const Signup = () => {
 
     const [signUpError, setSignUpError] = useState('');
 
+    const [createdUserEmail, setCreatedUserEmail] = useState(' ')
+
+    const [token] = useToken(createdUserEmail);
+
     const navigate = useNavigate();
+
+    if (token) {
+        navigate('/');
+    }
 
     const handleSignUp = (data) => {
         // console.log(data);
@@ -55,9 +64,12 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('save user', data);
-                navigate('/');
+                // getUserToken(email);
+                setCreatedUserEmail(email);
             })
     }
+
+
 
     return (
         <div className='h-[800px]  flex justify-center items-center'>
